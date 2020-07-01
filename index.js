@@ -12,6 +12,7 @@ const bot = linebot({
     channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
 });
 
+
 const app = express();
 
 const linebotParser = bot.parser();
