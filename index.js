@@ -246,8 +246,8 @@ bot.on('message', function (event) {
 
 			return event.reply(
 			{"type": "image",
-			"originalContentUrl": "https://i.imgur.com/Cx0v20I.png",
-			"previewImageUrl": "https://i.imgur.com/Cx0v20I.png"
+			"originalContentUrl": "https://imgur.com/pIYJKNZ.jpg",
+			"previewImageUrl": "https://imgur.com/pIYJKNZ.jpg"
 			});
 			
 			break;            
