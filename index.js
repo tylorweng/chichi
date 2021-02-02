@@ -1,4 +1,4 @@
-//GIB報你知
+//齊齊報你知
 
 var request = require("request");
 var cheerio = require("cheerio");
@@ -23,14 +23,6 @@ app.get('/', function (req, res) {
 
 app.post('/linewebhook', linebotParser);
 
-//每當server啟動，或是重build時，發送給自己的訊息
-setTimeout(function () {
-    var userId = 'U087e7ce49ad11b0bdbc68a240e6d8108';
-    var sendMsg = 'server啟動惹';
-    bot.push(userId, sendMsg);
-    console.log('send: ' + sendMsg);
-}, 5000);
-
 
 //製作回覆
 bot.on('message', function (event) {
@@ -40,171 +32,26 @@ bot.on('message', function (event) {
         case 'text':
 
             switch (event.message.text) {
+			    
+//---------------------純文字區----------------------	
 
-                //純文字區	
-        case '安安':
-
-            event.reply('安安你好 幾歲 住哪？');
-
+	 case '阿齊':
+            event.reply('好帥');
              break;
-
-  // ----------------------------------------------------------------                  
 			    
-                //午餐吃什麼
-	      
-        case '午餐吃什麼' :   
-        case '中午吃什麼' :
-        case '吃什麼':
-        case '吃甚麼':
-        case '午餐吃甚麼':
-        case '中午吃甚麼':
-        case '吃什麼？':
-        case '吃甚麼？':
-			    
-		
-            return event.reply(	 
-                
-                {
-                    "type": "template",
-                    "altText": "this is a buttons template",
-                    "template": {
-                      "type": "buttons",
-                      "actions": [
-                        {
-                          "type": "message",
-                          "label": "低價位",
-                          "text": "低價位"
-                        },
-                        {
-                          "type": "message",
-                          "label": "中價位",
-                          "text": "中價位"
-                        },
-                        {
-                          "type": "message",
-                          "label": "高價位",
-                          "text": "高價位"
-                        }
-                      ],
-                      "thumbnailImageUrl": "https://fastly.4sqi.net/img/general/width960/25871419_FD801fqui1PoxW2IaoNC2PZUsB_MuHNjSHvEKIs1MHE.jpg",
-                      "title": "今天想吃點什麼呢？",
-                      "text": "點選下面的價位來瞧瞧吧！"
-                    }
-                  }
-            );
+//---------------------圖片區----------------------				    
+	
+	case '傻眼':
+	return event.reply(
+		{"type": "image",
+		"originalContentUrl": "https://imgur.com/pIYJKNZ.jpg",
+		"previewImageUrl": "https://imgur.com/pIYJKNZ.jpg"});
+             break;            
                     
-            break;	
-			    
-			    
-			    	    
-		//random 中餐選擇區	
-		case '低價位':
-			var items = Array("蛋餅","水煎包","馬祖炒麵","八方雲集","早餐店");			
-			var item = items[Math.floor(Math.random()*items.length)];
-			
-			return event.reply(
-			{"type": "text",
-			"text":"幫你想好了，你今天就吃 : 「" + item + "」吧!"
-			});
-			
-			break;	
-			
-		case '中價位':
-			var items = Array("麥當勞","漢堡王","Johonson's義大利麵");			
-			var item = items[Math.floor(Math.random()*items.length)];
-			
-			return event.reply(
-			{"type": "text",
-			"text":"幫你想好了，你今天就吃 : 「" + item + "」吧!"
-			});
-			
-			break;	
-			
-		case '高價位':
-			var items = Array("還沒有資料ＱＱ");			
-			var item = items[Math.floor(Math.random()*items.length)];
-			
-			return event.reply(
-			{"type": "text",
-			"text":"幫你想好了，你今天就吃 : 「" + item + "」吧!"
-			});
-			
-            break;	 
-            
 
 // ----------------------------------------------------------------                    
 			    
-	    //喝茶專區	 
-        case '喝茶':
-        case '喝茶？':	    
-		
-            return event.reply(	 
-                
-                {
-                    "type": "template",
-                    "altText": "this is a buttons template",
-                    "template": {
-                      "type": "buttons",
-                      "actions": [
-                        {
-                          "type": "message",
-                          "label": "跟美女喝茶",
-                          "text": "跟美女喝茶"
-                        },
-                        {
-                          "type": "message",
-                          "label": "喝「山焙」的茶",
-                          "text": "喝「山焙」的茶"
-                        }
-                      ],
-                      "thumbnailImageUrl": "https://www.mingpaocanada.com/healthnet/gallery_image/20200331001.jpg",
-                      "title": "請問要喝茶還是喝茶？",
-                      "text": "請選擇！！"
-                    }
-                  }
-            );
-                    
-            break;	
-
-
-
-        case '跟美女喝茶':
-
-
-                return event.reply(	 
-                
-                    {
-                        "type": "image",
-                        "originalContentUrl": "https://live.staticflickr.com/8217/29023807952_99739a100d_b.jpg",
-                        "previewImageUrl": "https://live.staticflickr.com/8217/29023807952_99739a100d_b.jpg",
-                        "animated": false
-                      }
-                );
-                        
-                break;	
-
-           
-                case '喝「山焙」的茶':
-
-
-                    return event.reply(	 
-                    
-                        {
-                            "type": "image",
-                            "originalContentUrl": "https://scontent.ftpe12-2.fna.fbcdn.net/v/t1.0-9/95955824_517701845563400_264429222175440896_o.jpg?_nc_cat=110&_nc_sid=8024bb&_nc_ohc=yFFjWGiATzwAX_SMNSu&_nc_ht=scontent.ftpe12-2.fna&oh=0d6942a68f5be5efb39b77578241bd62&oe=5EF9A38B",
-                            "previewImageUrl": "https://scontent.ftpe12-2.fna.fbcdn.net/v/t1.0-9/95955824_517701845563400_264429222175440896_o.jpg?_nc_cat=110&_nc_sid=8024bb&_nc_ohc=yFFjWGiATzwAX_SMNSu&_nc_ht=scontent.ftpe12-2.fna&oh=0d6942a68f5be5efb39b77578241bd62&oe=5EF9A38B",
-                            "animated": false
-                          }
-                    );
-                            
-                break;		    
-		
-			    
-// ----------------------------------------------------------------
-			    
-			    
-			    
-              //random 笑話區	
+        //random 笑話區	
 		case '笑話':
 			var items = Array(
 			"有一天，女友發一則簡訊給我:「我們還是分手吧!」 \n 我還沒來得及傷心，女友又發來一則:「對不起，發錯人了。」\n 這下我可以徹底傷心了...",
@@ -236,69 +83,12 @@ bot.on('message', function (event) {
                     
         case '我難過':
 
-			event.reply('來，導播~音樂請下: ' + 'https://www.youtube.com/watch?v=T0LfHEwEXXw');
+	event.reply('來，導播~音樂請下: ' + 'https://www.youtube.com/watch?v=T0LfHEwEXXw');
 
-			break;	
+		break;	
 			 
 
-		//圖片區		
-		case '傻眼':
-
-			return event.reply(
-			{"type": "image",
-			"originalContentUrl": "https://imgur.com/pIYJKNZ.jpg",
-			"previewImageUrl": "https://imgur.com/pIYJKNZ.jpg"
-			});
-			
-			break;            
-                    
-                    
-        case '日圓':
-		case '日幣':	
-		case 'JPY':	
-
-			request({
-			url: " https://www.esunbank.com.tw/bank/personal/deposit/rate/forex/foreign-exchange-rates",
-			method: "GET"
-			}, function(error, response, body) {
-				if (error || !body) {
-				return;
-			}else{
-
-			// 爬完網頁後要做的事情
-			var $ = cheerio.load(body);
-	
-			//即期買入匯率
-			var target_odd = $(".odd");
-	
-			//即期賣出匯率
-			var target_even = $(".even");
-
-
-			//日圓即期買入、賣出
-			var result_buy = target_odd[9].children[0].data;
-			var result_sell = target_even[9].children[0].data;
-			
-			var result_buy_app = target_odd[10].children[0].data;
-			var result_sell_app = target_even[10].children[0].data;
-			
-			return event.reply('日圓(JPY)\n' +
-			'\n(銀行)'+
-			'\n即期買入匯率為:' + result_buy + 
-			'\n即期賣出匯率為:' + result_sell +
-			'\n'+
-			'\n✩優惠✩(網銀、APP)'+
-			'\n即期買入匯率為:' + result_buy_app + 
-			'\n即期賣出匯率為:' + result_sell_app +
-			'\n\n更多資訊請至玉山銀行:\nhttps://www.esunbank.com.tw/bank/personal/deposit/rate/forex/foreign-exchange-rates');
-	
-			}
-		  });
-
-		  
-
-			break;
-			
+//----------匯率專區-------------
 	
 		case '美金':
 		case '美元':	
@@ -344,8 +134,184 @@ bot.on('message', function (event) {
 
 
 			break;
-        
-                    
+
+	        case '人民幣':
+		case 'CNY':	
+
+			request({
+			url: " https://www.esunbank.com.tw/bank/personal/deposit/rate/forex/foreign-exchange-rates",
+			method: "GET"
+			}, function(error, response, body) {
+				if (error || !body) {
+				return;
+			}else{
+
+			// 爬完網頁後要做的事情
+			var $ = cheerio.load(body);
+	
+			//即期買入匯率
+			var target_odd = $(".odd");
+	
+			//即期賣出匯率
+			var target_even = $(".even");
+
+
+			//人民幣即期買入、賣出
+			var result_buy = target_odd[3].children[0].data;
+			var result_sell = target_even[3].children[0].data;
+			
+			var result_buy_app = target_odd[4].children[0].data;
+			var result_sell_app = target_even[4].children[0].data;
+			
+			return event.reply('人民幣(CNY)\n' +
+			'\n(銀行)'+
+			'\n即期買入匯率為:' + result_buy + 
+			'\n即期賣出匯率為:' + result_sell +
+			'\n'+
+			'\n✩優惠✩(網銀、APP)'+
+			'\n即期買入匯率為:' + result_buy_app + 
+			'\n即期賣出匯率為:' + result_sell_app +
+			'\n\n更多資訊請至玉山銀行:\nhttps://www.esunbank.com.tw/bank/personal/deposit/rate/forex/foreign-exchange-rates');
+	
+			}
+		  });
+
+			break;		    
+			    
+			    
+                 
+                case '日圓':
+		case '日幣':	
+		case 'JPY':	
+
+			request({
+			url: " https://www.esunbank.com.tw/bank/personal/deposit/rate/forex/foreign-exchange-rates",
+			method: "GET"
+			}, function(error, response, body) {
+				if (error || !body) {
+				return;
+			}else{
+
+			// 爬完網頁後要做的事情
+			var $ = cheerio.load(body);
+	
+			//即期買入匯率
+			var target_odd = $(".odd");
+	
+			//即期賣出匯率
+			var target_even = $(".even");
+
+
+			//日圓即期買入、賣出
+			var result_buy = target_odd[9].children[0].data;
+			var result_sell = target_even[9].children[0].data;
+			
+			var result_buy_app = target_odd[10].children[0].data;
+			var result_sell_app = target_even[10].children[0].data;
+			
+			return event.reply('日圓(JPY)\n' +
+			'\n(銀行)'+
+			'\n即期買入匯率為:' + result_buy + 
+			'\n即期賣出匯率為:' + result_sell +
+			'\n'+
+			'\n✩優惠✩(網銀、APP)'+
+			'\n即期買入匯率為:' + result_buy_app + 
+			'\n即期賣出匯率為:' + result_sell_app +
+			'\n\n更多資訊請至玉山銀行:\nhttps://www.esunbank.com.tw/bank/personal/deposit/rate/forex/foreign-exchange-rates');
+	
+			}
+		  });
+
+			break;
+			    
+	        case '歐元':
+		case 'EUR':	
+
+			request({
+			url: " https://www.esunbank.com.tw/bank/personal/deposit/rate/forex/foreign-exchange-rates",
+			method: "GET"
+			}, function(error, response, body) {
+				if (error || !body) {
+				return;
+			}else{
+
+			// 爬完網頁後要做的事情
+			var $ = cheerio.load(body);
+	
+			//即期買入匯率
+			var target_odd = $(".odd");
+	
+			//即期賣出匯率
+			var target_even = $(".even");
+
+
+			//歐元即期買入、賣出
+			var result_buy = target_odd[12].children[0].data;
+			var result_sell = target_even[12].children[0].data;
+			
+			var result_buy_app = target_odd[13].children[0].data;
+			var result_sell_app = target_even[13].children[0].data;
+			
+			return event.reply('歐元(EUR)\n' +
+			'\n(銀行)'+
+			'\n即期買入匯率為:' + result_buy + 
+			'\n即期賣出匯率為:' + result_sell +
+			'\n'+
+			'\n✩優惠✩(網銀、APP)'+
+			'\n即期買入匯率為:' + result_buy_app + 
+			'\n即期賣出匯率為:' + result_sell_app +
+			'\n\n更多資訊請至玉山銀行:\nhttps://www.esunbank.com.tw/bank/personal/deposit/rate/forex/foreign-exchange-rates');
+	
+			}
+		  });
+
+			break;
+			    		    
+	        case '英鎊':
+		case 'GBP':	
+
+			request({
+			url: " https://www.esunbank.com.tw/bank/personal/deposit/rate/forex/foreign-exchange-rates",
+			method: "GET"
+			}, function(error, response, body) {
+				if (error || !body) {
+				return;
+			}else{
+
+			// 爬完網頁後要做的事情
+			var $ = cheerio.load(body);
+	
+			//即期買入匯率
+			var target_odd = $(".odd");
+	
+			//即期賣出匯率
+			var target_even = $(".even");
+
+
+			//英鎊即期買入、賣出
+			var result_buy = target_odd[21].children[0].data;
+			var result_sell = target_even[21].children[0].data;
+			
+			var result_buy_app = target_odd[22].children[0].data;
+			var result_sell_app = target_even[22].children[0].data;
+			
+			return event.reply('英鎊(GBP)\n' +
+			'\n(銀行)'+
+			'\n即期買入匯率為:' + result_buy + 
+			'\n即期賣出匯率為:' + result_sell +
+			'\n'+
+			'\n✩優惠✩(網銀、APP)'+
+			'\n即期買入匯率為:' + result_buy_app + 
+			'\n即期賣出匯率為:' + result_sell_app +
+			'\n\n更多資訊請至玉山銀行:\nhttps://www.esunbank.com.tw/bank/personal/deposit/rate/forex/foreign-exchange-rates');
+	
+			}
+		  });
+
+			break;
+			    		    
+			    
+			    
                     
             }// text輸出，請寫在這上方 
             break;
@@ -354,8 +320,6 @@ bot.on('message', function (event) {
     }
 
 });
-
-
 
 
 app.listen(process.env.PORT || 80, function () {
